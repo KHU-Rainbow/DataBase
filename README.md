@@ -40,5 +40,6 @@ Packet_date는 스터디 테이블의 Study_date의 외래키이며 날짜를 �
 <img width="412" alt="20201031_234212" src="https://user-images.githubusercontent.com/60510921/97783933-56547f80-1bde-11eb-90f7-50452175f307.png"> 
 
 아래는 rds 구축 사진입니다.
+
 <img width="464" alt="20201101_000106" src="https://user-images.githubusercontent.com/60510921/97783936-5e142400-1bde-11eb-903e-11acf481bb71.png">
 
