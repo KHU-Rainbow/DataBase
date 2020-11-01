@@ -2,7 +2,6 @@
 디비&서버 입니당! 앞으로 sql문을 업로드 할게용
 
 
-** 패킷 테이블 설명과 sql문, 그리고 새로 생긴 테이블의 sql문의 업뎃이 필요합니다** 자고 일어나서 오전중에 할게요!
 
 디비& 서버입니다
 중간 부분까지 들어갈 내용은 다음과 같습니다.
@@ -27,14 +26,22 @@ Study_time은 각 날짜별 공부량이 어느정도인지 알려주는 어트�
 Study_goal은 사용자가 설정할 공부 목표량이며 Study_achieved들의 값을 얻어낼때 도움을 받고자 넣었습니다.
 Study_achieved는 사용자가 하루의 목표량을 달성했는지 알려주기 위한 어트리뷰트입니다.
 
-아래는 패킷 테이블의 sql문입니다. (수정 필요)
+아래는 패킷 테이블의 sql문입니다.
 
-<img width="390" alt="20201029_164837" src="https://user-images.githubusercontent.com/60510921/97783921-4a68bd80-1bde-11eb-849a-4c2b62011880.png">
+<img width="338" alt="변경된 패킷 sql" src="https://user-images.githubusercontent.com/60510921/97792826-f7672880-1c26-11eb-8a4e-b27f08596db3.png">
 
 패킷 테이블의 어트리뷰트들은
-복합키로 기본키를 구성하는 Packet_When과 Packet_date가 있습니다.
-Packet_date는 스터디 테이블의 Study_date의 외래키이며 날짜를 나타내고 Packet_When은 하루 중 언제접속이 되었는지 알려주는 어트리뷰트입니다.
-(여긴 일단 수정하겠습니다. 여기 부분은 빼고 보고서 쓸 때 참고해주세요)
+복합키로 기본키를 구성하는 Packet_time과 Packet_date가 있습니다.
+Packet_date는 스터디 테이블의 Study_date의 외래키이며 날짜를 나타내고 Packet_time은 하루 중 전체 접속시간이 얼마인지 나타냅니다.
+Packet_RSSI는 감지된 패킷의 신호 세기가 얼마인지를 나타냅니다.
+
+마지막으로 디택트 테이블의 sql문입니다.
+
+<img width="377" alt="detect table" src="https://user-images.githubusercontent.com/60510921/97792832-02ba5400-1c27-11eb-867c-edffc7fb2eef.png">
+
+이 테이블은 패킷 테이블에 하루 중 언제 감지가 되었는지를 표현하기엔 무리가 있어서 만들었습니다.
+detect_date로 패킷 테이블을 참조하며
+detect_time으로 감지된 시간들을 표시합니다.
 
 
 위의 데이터 베이스를 aws에 구축하기 위해 ec2와 rds를 이용했습니다.
