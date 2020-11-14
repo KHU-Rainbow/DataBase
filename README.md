@@ -1,7 +1,68 @@
 # DataBase
 디비&서버 입니당! 앞으로 sql문을 업로드 할게용
 
+** 11월 14일 업데이트 밑에 내용 바꿀건 다음에 할게여!***
 
+람다함수 설명 현재 총 8개 아마 9개면 될듯?
+이름이 헷갈리니 잘 구분해야합니다
+
+-------- 라즈베리파이 -> rds ---------
+1. rainbow-post-Study
+post 매소드이므로 https url로 사용못하고 postman을 쓰거나 curl을 사용해야합니다.
+전 그냥 api gateway 테스트 썼는데 되더라구요
+
+2. rainbow-post-Detect
+위와 동일한데, Detect 테이블에 데이터 넣는함수입니다.
+
+-------- App <-> rds --------
+1. rainbow-app-get-achieved
+목표를 달성한 날, 못한 날을 불러오는 함수
+
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-achieved
+위의 url에 접속하면 람다함수가 가동되어 위의 페이지에 달성한 날이 뜹니다.
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-achieved?achieved=1
+위와 같이 하면 목표를 달성한 날을 achieved=0을 하면 목표를 달성하지 못한 날을 불러옵니다.
+
+2. rainbow-get-count_interrupt
+원하는 날짜의 핸드폰 사용횟수를 보여줍니다.
+
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-count-interrupt
+위의 url에 접속하면 람다함수가 가동되어 원하는 데이터를 가져옵니다.
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-count-interrupt?target=2020-11-08
+위와 같이 ?뒤에 target=[원하는 날짜]를 입력하면 해당 날짜에서 핸드폰 사용횟수를 보여줍니다.
+
+3. rainbow-get-goal
+원하는 날짜의 목표 공부량을 보여줍니다.
+
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-goal
+위의 url에 접속하면 람다함수가 가동됩니다.
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-goal?target=2020-11-08
+위와 같이?뒤에 target=[원하는 날짜]를 입력하면 해당 날짜의 목표시간을 보여줍니다.
+현재는 rds에 저장된 초단위로 된 수를 가져오는데 원하면 시간, 분, 초 단위로 바꿔서 보여줄 수 있습니다.
+추후 상의해서 바꿔볼게요
+
+4. rainbow-post-goal
+앱에서 설정한 목표 시간을 rds에 보내주는 함수
+
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-post-goal
+위의 url을 이용하면 람다함수가 가동됩니다.
+단, post이므로 위에 있는 get함수들 처럼 url에 파라미터를 넣는다고 되는게 아니고
+postman을 쓰거나 curl을 사용해서 body에 값을 넣어야합니다.
+
+5. rainbow-app-get-calendar
+rds에 저장된 Study_date들을 가져오는 함수
+
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-calendar
+위의 url을 이용하면 람다함수가 가동되며
+?로 뒤에 파라미터를 넣을 필요는 없습니다.
+
+6. rainbow-get-studytime
+원하는 날짜의 총 공부시간을 보여주는 함수
+
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-studytime
+위의 url을 이용하면 람다함수가 가동되며
+https://r89kbtj8x9.execute-api.us-east-1.amazonaws.com/dev/rainbow-get-studytime?target=2020-11-14
+위처럼 ?뒤에 target=[원하는 날짜]를 넣어주면 그 날짜의 총 공부시간을 보여줍니다.
 
 디비& 서버입니다
 중간 부분까지 들어갈 내용은 다음과 같습니다.
